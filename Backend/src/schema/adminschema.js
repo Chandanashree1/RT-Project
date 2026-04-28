@@ -25,10 +25,6 @@ const adminSchema = new mongoose.Schema(
             type : Boolean,
             default : true
         },
-        refreshToken : {
-            type : String,
-            default : null
-        },
         lastLogin : Date,
         passwordChangeAt : Date,
         isActive : {
