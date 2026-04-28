@@ -1,0 +1,100 @@
+.users-page {
+  padding: 20px;
+}
+
+.table-wrapper {
+  width: 100%;
+}
+
+/* GRID ALIGN */
+.top-controls {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* BUTTON */
+.top-controls button:first-child {
+  grid-column: 1;
+  justify-self: start;
+}
+
+/* SEARCH INPUT */
+.search-input {
+  grid-column: 2;
+  justify-self: center;
+
+  width: 220px;
+  padding: 6px;
+  border: none;
+  border-bottom: 2px solid #1976d2;
+  outline: none;
+}
+
+/* SEARCH ICON */
+.search-icon {
+  grid-column: 5;
+  justify-self: end;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+}
+
+/* HEADER */
+.header-row th {
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+/* SEPARATOR LINE */
+.border-right {
+  border-right: 2px solid white;
+}
+
+/* CENTER TEXT */
+.center-text {
+  text-align: center;
+}
+
+/* ROW */
+.row:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.row:hover {
+  background: #e3f2fd;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+}

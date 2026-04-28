@@ -1,0 +1,19 @@
+<div class="navbar">
+  <div class="logo">STUDENT STATUS</div>
+
+  <div class="right">
+    <!-- <i class="icon">🔍</i> -->
+    <!-- <i class="icon">🌙</i> -->
+    <!-- <i class="icon">🔔</i> -->
+
+    <div class="profile" (click)="toggleDropdown()">
+      <img src="https://i.pravatar.cc/40" />
+
+      <div class="dropdown" *ngIf="showDropdown">
+        <p><strong>{{ email }}</strong></p>
+        <hr />
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
