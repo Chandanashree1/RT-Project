@@ -1,0 +1,43 @@
+<div class="sidebar">
+
+  <h4>NAVIGATION</h4>
+
+  <!-- DASHBOARD -->
+  <div class="menu" routerLink="/dashboard">
+    <span>📊 Dashboard</span>
+  </div>
+
+  <!-- REPORTS -->
+  <div class="menu" (click)="toggleMenu('reports')">
+    <span>📄 Reports</span>
+    <span>›</span>
+  </div>
+
+  <div class="submenu" *ngIf="activeMenu === 'reports'">
+    <ul>
+      <li><p>Sales Report</p></li>
+      <li><p>Leads Report</p></li>
+      <li><p>Project Report</p></li>
+      <li><p>Timesheets Report</p></li>
+    </ul>
+  </div>
+
+  <!-- APPLICATION -->
+  <div class="menu" (click)="toggle('application')">
+    <span>📁 Application</span>
+    <span>›</span>
+  </div>
+
+  <div class="submenu" *ngIf="active === 'application'">
+    <ul>
+      <li><p>App 1</p></li>
+      <li><p>App 2</p></li>
+    </ul>
+  </div>
+
+  <!-- USERS -->
+  <div class="menu" routerLink="/users">
+    <span>👤 Users</span>
+  </div>
+
+</div>

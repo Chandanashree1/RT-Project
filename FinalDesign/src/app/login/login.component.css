@@ -1,0 +1,39 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.box {
+  padding: 30px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid black;
+  border-radius: 25px;
+  margin-left: -10px;
+}
+
+button {
+  width: 80%;
+  padding: 10px;
+  background-image: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #00c6ff 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-left: 90px;
+}
