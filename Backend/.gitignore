@@ -47,4 +47,4 @@ coverage/
 
 # Package lock (optional - depends on team preference)
 
-# package-lock.json
+package-lock.json
