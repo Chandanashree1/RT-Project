@@ -1,0 +1,34 @@
+<div class="details-page">
+
+  <!-- 🔙 BACK -->
+  <div class="top-bar">
+    <span class="back" (click)="goBack()"><div class="circle-arrow">
+  <i class="bi bi-arrow-left"></i>
+</div></span>
+    <h2>{{user?.name}} Performance</h2>
+  </div>
+  
+
+  <!-- 🔥 CARDS -->
+  <div class="cards">
+    <div class="card" *ngFor="let item of skillList">
+
+      <h4>{{item.name}}</h4>
+      <p>{{item.value}}%</p>
+
+      <!-- progress -->
+      <div class="progress">
+        <div class="bar" [style.width.%]="item.value"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🔥 PREMIUM CIRCLE -->
+  <div class="circle-wrapper">
+    <div class="circle" [style.--value]="overall">
+      <span>{{overall}}%</span>
+    </div>
+  </div>
+
+</div>

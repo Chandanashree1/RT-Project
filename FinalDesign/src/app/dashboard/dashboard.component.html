@@ -1,3 +1,25 @@
 <div class="dashboard">
-  <h2>Dashboard Content</h2>
+
+  <h2>Dashboard</h2>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+
+    <tr *ngFor="let u of users">
+      <td>
+        <span class="clickable" (click)="openUser(u)">
+          {{u.name}}
+        </span>
+      </td>
+      <td>{{u.role}}</td>
+      <td>{{u.date}}</td>
+      <td>{{u.status}}</td>
+    </tr>
+  </table>
+
 </div>
