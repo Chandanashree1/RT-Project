@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const userController = require('../controller/usercontroller')
 
+
 router.get('/', userController.home)
 // db controller
 router.get('/users',userController.getUser)
