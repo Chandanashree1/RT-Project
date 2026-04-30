@@ -1,4 +1,4 @@
-<div class="login-container">
+<!-- <div class="login-container">
   <div class="box">
     <h2>Login</h2>
 
@@ -19,5 +19,58 @@
     <div class="button">
       <button (click)="login()">Login</button>
     </div>
+  </div>
+</div> 11-->
+<!-- <div class="login-container">
+  <div class="box">
+    <h2>Welcome Back 👋</h2>
+
+    <div class="form-row">
+      <input [(ngModel)]="username" placeholder="Enter username">
+    </div>
+    <div class="error" *ngIf="usernameError">
+      {{ usernameError }}
+    </div>
+
+    <div class="form-row">
+      <input [(ngModel)]="password" type="password" placeholder="Enter password">
+    </div>
+    <div class="error" *ngIf="passwordError">
+      {{ passwordError }}
+    </div>
+
+    <div class="button">
+      <button (click)="login()">Login</button>
+    </div>
+
+    <p class="footer-text">Secure Admin Panel</p>
+  </div>
+</div> -->
+<div class="login-container">
+  <div class="box">
+
+    <h2>🔐 Secure Login</h2>
+    <p class="subtitle">Access your dashboard</p>
+
+    <div class="form-row input-group">
+      <span class="icon">👤</span>
+      <input [(ngModel)]="username" placeholder="Username">
+    </div>
+    <div class="error" *ngIf="usernameError">
+      {{ usernameError }}
+    </div>
+
+    <div class="form-row input-group">
+      <span class="icon">🔒</span>
+      <input [(ngModel)]="password" type="password" placeholder="Password">
+    </div>
+    <div class="error" *ngIf="passwordError">
+      {{ passwordError }}
+    </div>
+
+    <button (click)="login()">Login</button>
+
+    <!-- <p class="footer-text">Powered by Secure System</p> -->
+
   </div>
 </div>

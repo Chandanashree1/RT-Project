@@ -81,7 +81,6 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .modal-box {
@@ -99,17 +98,4 @@ input {
   padding: 10px;
   border: 1px solid #ccc;
   
-}
-input {
-  padding: 10px;
-  border-radius: 50px;   /* 🔥 curved */
-  border: 1px solid #ccc;
-  outline: none;
-  transition: 0.3s;
-  text-align: center;
-}
-
-input:focus {
-  border-color: #3f51b5;
-  box-shadow: 0 0 5px rgba(63,81,181,0.3);
 }
