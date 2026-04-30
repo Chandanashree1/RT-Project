@@ -2,64 +2,61 @@ const bcrypt = require('bcrypt')
 const Admin = require('../models/adminmodel')
 
 // create admin
-exports.createAdmin = async (req,res) => {
-    try{
-        const {fullName,email,phone, password} = req.body
+exports.createAdmin = async (req, res) => {
+    try {
+        const { fullName, email, phone, password } = req.body
         // const defaultPassword = "Admin@123"
-        const hashedPassword = await bcrypt.hash(password,10)
+        const hashedPassword = await bcrypt.hash(password, 10)
         const admin = await Admin.create({
-            fullName,email,phone,password : hashedPassword
+            fullName, email, phone, password: hashedPassword
         })
         res.status(201).json({
-            message : "Admin Created"
+            message: "Admin Created"
         })
     }
-    catch(error){
-        res.status(500).json({error: error.message})
+    catch (error) {
+        res.status(500).json({ error: error.message })
     }
 }
 // login
-exports.loginAdmin = async (req,res) => {
-    try{
-        const {email,password} = req.body
-        const admin = await Admin.findOne({email})
-        if(!admin){
-            return res.status(500).json({message : "Admin not Found"})
+
+exports.loginAdmin = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const admin = await Admin.findOne({ username });
+        if (!admin) {
+            return res.status(201).json({ message: "Admin not found" });
         }
-        const isMatch = await bcrypt.compare(password,admin.password)
-        if(!isMatch){
-            return res.status(400).json({message : "Invalid Password"})
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch) {
+            return res.status(201).json({ message: "Invalid password" });
         }
-        if(admin.isFirstLogin){
-            return res.json({
-                message : "First login - reset password",resetRequired : true
-            })
-        }
-    
-        await admin.save()
-        res.json({message : "Login Successfully"})
+        res.status(200).json({
+            status: "success",
+            message: "Login successful"
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
-    catch(error){
-        res.status(404).json({error : error.message})
-    }
-}
+};
+
 
 // reset password
-exports.resetPassword = async (req,res) => {
-    try{
-        const {email,password} = req.body
-        const admin = await Admin.findOne({email})
-        if(!admin){
-            return res.status(404).json({message : "Admin not Found"})
+exports.resetPassword = async (req, res) => {
+    try {
+        const { email, password } = req.body
+        const admin = await Admin.findOne({ email })
+        if (!admin) {
+            return res.status(404).json({ message: "Admin not Found" })
         }
-        const hashPassword = await bcrypt.hash(password,10)
+        const hashPassword = await bcrypt.hash(password, 10)
         admin.password = hashPassword
         admin.isFirstLogin = false
         admin.passwordChangeAt = new Date()
         await admin.save()
-        res.json({message : "Password Updated"})
+        res.json({ message: "Password Updated" })
     }
-    catch(error){
-        res.status(404).json({error : error.message})
+    catch (error) {
+        res.status(404).json({ error: error.message })
     }
 }
