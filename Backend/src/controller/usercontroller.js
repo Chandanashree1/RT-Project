@@ -6,7 +6,7 @@ exports.home = (req,res) => {
 // get user
 exports.getUser = async (req,res) => {
     try{
-        const users = await User.find({isDelete:false,adminId : req.adminId})
+        const users = await User.find({isDelete:false})
         res.json(users)
     }
     catch(error){
@@ -21,6 +21,7 @@ exports.createUser = async (req,res) => {
         res.status(201).json(user)
     }
     catch(error){
+        console.log("ERROR:", error.message);
         res.status(500).json({error : error.message})
     }
 }
@@ -41,7 +42,7 @@ exports.updateUser = async (req,res) => {
         const {id} =  req.params
         const {name,email} = req.body
         console.log("Body",req.body)
-        const updateuser = await User.findByIdAndUpdate(id,{name,email},{new : true})
+        const updateuser = await User.findByIdAndUpdate(id,{name,email,adminId : req.adminId},{new : true})
         if(!updateuser){
         return res.status(404).json({message : "User not found"})
         }

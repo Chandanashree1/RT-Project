@@ -11,6 +11,19 @@ const userSchema = new mongoose.Schema(
             required : true,
             unique : true
         },
+        phone : {
+            type : String,
+            required : true
+        },
+        test : {
+            type : String,
+            required : true
+        },
+        adminId : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Admin',
+            required : true
+        },
         isDelete : {
             type : Boolean,
             default : false

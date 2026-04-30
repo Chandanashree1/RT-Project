@@ -38,7 +38,7 @@ module.exports = {
             accessTokenExpiresAt: token.accessTokenExpiresAt,
             refreshToken: token.refreshToken,
             refreshTokenExpiresAt: token.refreshTokenExpiresAt,
-            client: { id: client.id },
+            client: { id: client.id ,grants: client.grants},
             user: {
                 id: user._id,
                 email: user.email
@@ -60,8 +60,15 @@ module.exports = {
         return {
             accessToken: token.accessToken,
             accessTokenExpiresAt: token.accessTokenExpiresAt,
-            client: token.client,
-            user: token.user
+            client: {
+                id: token.client.id,
+                grants: token.client.grants
+            },
+
+            user: {
+                id: token.user.id,
+                email: token.user.email
+            }
         }
     },
     // refersh token flow
