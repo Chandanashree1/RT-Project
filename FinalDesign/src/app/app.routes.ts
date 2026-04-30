@@ -21,6 +21,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component'; // ✅ ADD THIS
+import { AdminDetailsComponent } from './admin-details/admin-details.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -33,7 +34,8 @@ export const routes: Routes = [
       { path: 'users', component: UsersComponent },
 
       // 🔥 ADD THIS LINE
-      { path: 'user-details', component: UserDetailsComponent }
+      { path: 'user-details', component: UserDetailsComponent },
+      { path : 'admin-details', component:AdminDetailsComponent}
     ]
   }
 ];

@@ -1,4 +1,4 @@
-.login-container {
+/* .login-container {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -31,9 +31,236 @@ button {
   border: none;
   border-radius: 25px;
 }
-
+111
 .error {
   color: red;
   font-size: 12px;
   margin-left: 90px;
+} */
+/* Background */
+/* .login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Glass Card */
+/* .box {
+  padding: 35px;
+  width: 300px;
+  border-radius: 20px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  color: white;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Title */
+/* .box h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+} */
+
+/* Input Fields */
+/* input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+
+  border: none;
+  border-radius: 30px;
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+
+  transition: 0.3s;
+} */
+
+/* Placeholder */
+/* input::placeholder {
+  color: #ddd;
+} */
+
+/* Focus effect */
+/* input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+} */
+
+/* Button */
+/* button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.4s;
+} */
+
+/* Hover button */
+/* button:hover {
+  background: linear-gradient(45deg, #0072ff, #00c6ff);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.5);
+} */
+
+/* Error */
+/* .error {
+  color: #ff6b6b;
+  font-size: 12px;
+  text-align: left;
+  margin-left: 10px;
+} */
+
+/* Footer text */
+/* .footer-text {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #ccc;
+} */
+
+/* Animation */
+/* @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */ 
+/* Background with glow */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', sans-serif;
+  background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+  background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+}
+
+/* Glass Card */
+.box {
+  width: 320px;
+  padding: 40px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+
+  box-shadow: 
+    0 0 25px rgba(0, 114, 255, 0.3),
+    0 0 60px rgba(0, 198, 255, 0.2);
+
+  text-align: center;
+  color: white;
+
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Title */
+.box h2 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* Input group with icon */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 30px;
+  padding: 0 10px;
+  margin: 12px 0;
+}
+
+/* Icon */
+.icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  color: white;
+  outline: none;
+}
+
+/* Glow on focus */
+.input-group:focus-within {
+  box-shadow: 0 0 10px #00c6ff;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+/* Button hover glow */
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px #00c6ff;
+}
+
+/* Error */
+.error {
+  color: #ff4d4d;
+  font-size: 11px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* Footer */
+.footer-text {
+  margin-top: 15px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
