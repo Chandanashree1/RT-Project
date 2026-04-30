@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const Admin = require('../models/adminmodel')
 
+
 // create admin
 exports.createAdmin = async (req,res) => {
     try{
@@ -61,5 +62,32 @@ exports.resetPassword = async (req,res) => {
     }
     catch(error){
         res.status(404).json({error : error.message})
+    }
+}
+// soft delete
+exports.deleteAdmin = async(req,res) => {
+    try{
+        const{id} = req.params
+        await Admin.findByIdAndUpdate(id,{isDelete : true})
+        res.json({message : "User soft deleted"})
+    }
+    catch(error){
+        res.status(500).json({error : error.message})
+    }
+}
+// update admin
+exports.updateAdmin = async (req,res) => {
+    try{
+        const{id} = req.params
+        const{fullName,email,phone} = req.body
+        console.log("Body",req.body)
+        const updateadmin = await Admin.findOneAndUpdate({_id : id},{fullName,email,phone},{new : true})
+        if(!updateadmin){
+            return res.status(404).json({message : "User not found"})
+        }
+        res.json(updateadmin)
+    }
+    catch(error){
+        res.status(500).json({error : error.message})
     }
 }
