@@ -28,26 +28,21 @@
     <!-- TABLE -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-      <!-- NAME -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef class="center-text border-right">Name</th>
         <td mat-cell *matCellDef="let u" class="center-text">{{u.name}}</td>
       </ng-container>
 
-      <!-- EMAIL -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef class="center-text border-right">Email</th>
         <td mat-cell *matCellDef="let u" class="center-text">{{u.email}}</td>
       </ng-container>
 
-      <!-- ROLE -->
       <ng-container matColumnDef="role">
         <th mat-header-cell *matHeaderCellDef class="center-text border-right">Role</th>
         <td mat-cell *matCellDef="let u" class="center-text">{{u.role}}</td>
       </ng-container>
 
-    
-      <!-- ACTIONS -->
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef class="center-text">Actions</th>
         <td mat-cell *matCellDef="let u; let i = index" class="center-text">
@@ -78,26 +73,44 @@
 
 </div>
 
-<!-- MODAL -->
+
+<!-- ADD / EDIT MODAL -->
 <div class="modal" *ngIf="showForm">
   <div class="modal-box">
 
     <h3>{{ editIndex !== null ? 'Edit User' : 'Add User' }}</h3>
 
-    <input [(ngModel)]="student.name" placeholder="Name">
-    <input [(ngModel)]="student.role" placeholder="Role">
-    <input [(ngModel)]="student.email" placeholder="Email">
-    <!-- 🔒 PASSWORD ONLY FOR ADD -->
+    <input [(ngModel)]="student.name"  placeholder="Name">
+    <input [(ngModel)]="student.role"  placeholder="Role">
+    <input [(ngModel)]="student.email"  placeholder="Email">
+
     <input 
       *ngIf="editIndex === null"
       [(ngModel)]="student.password" 
-      type="password" placeholder="password">
+      type="password" placeholder="Password">
 
     <button mat-raised-button color="primary" (click)="addUser()">
       {{ editIndex !== null ? 'Update' : 'Save' }}
     </button>
 
     <button mat-raised-button color="warn" (click)="closeForm()">Cancel</button>
+
+  </div>
+</div>
+
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal" *ngIf="showDeleteConfirm">
+  <div class="modal-box confirm-box">
+
+    <h3>⚠️ Confirm Delete</h3>
+
+    <p>Are you sure you want to delete <b>{{deleteUserName}}</b>?</p>
+
+    <div class="confirm-actions">
+      <button mat-raised-button color="warn" (click)="confirmDelete()">Yes</button>
+      <button mat-raised-button (click)="cancelDelete()">No</button>
+    </div>
 
   </div>
 </div>

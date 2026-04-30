@@ -24,7 +24,6 @@ import { MatIconModule } from '@angular/material/icon';
 export class AdminDetailsComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['name', 'email', 'role', 'actions'];
-
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,6 +31,11 @@ export class AdminDetailsComponent implements AfterViewInit {
   showForm = false;
   showSearch = false;
   editIndex: number | null = null;
+
+  // 🔥 DELETE
+  showDeleteConfirm = false;
+  deleteIndex: number | null = null;
+  deleteUserName = '';
 
   student = {
     name: '',
@@ -49,13 +53,11 @@ export class AdminDetailsComponent implements AfterViewInit {
 
   toggleSearch() {
     this.showSearch = !this.showSearch;
-
-    if (!this.showSearch) {
-      this.applyFilter('');
-    }
+    if (!this.showSearch) this.applyFilter('');
   }
 
   openForm() {
+    this.showDeleteConfirm = false;
     this.editIndex = null;
     this.student = { name: '', email: '', role: '', password: '' };
     this.showForm = true;
@@ -72,7 +74,6 @@ export class AdminDetailsComponent implements AfterViewInit {
       return;
     }
 
-    // password only required for ADD
     if (this.editIndex === null && !this.student.password) {
       alert("Password required");
       return;
@@ -99,15 +100,36 @@ export class AdminDetailsComponent implements AfterViewInit {
   }
 
   editUser(user: any, index: number) {
-    this.student = { ...user, password: '' }; // 🔒 important
+    this.student = { ...user, password: '' };
     this.editIndex = index;
     this.showForm = true;
   }
 
+  // 🔥 DELETE CLICK
   deleteUser(index: number) {
+    const user = this.dataSource.data[index];
+
+    this.deleteIndex = index;
+    this.deleteUserName = user.name;
+    this.showDeleteConfirm = true;
+  }
+
+  // ✅ YES
+  confirmDelete() {
+    if (this.deleteIndex === null) return;
+
     const data = [...this.dataSource.data];
-    data.splice(index, 1);
+    data.splice(this.deleteIndex, 1);
     this.dataSource.data = data;
+
+    this.showDeleteConfirm = false;
+    this.deleteIndex = null;
+  }
+
+  // ❌ NO
+  cancelDelete() {
+    this.showDeleteConfirm = false;
+    this.deleteIndex = null;
   }
 
   applyFilter(value: string) {

@@ -113,3 +113,12 @@ input:focus {
   border-color: #3f51b5;
   box-shadow: 0 0 5px rgba(63,81,181,0.3);
 }
+.confirm-box {
+  text-align: center;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}

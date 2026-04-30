@@ -8,7 +8,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule,HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -20,7 +20,7 @@ export class LoginComponent {
   usernameError = '';
   passwordError = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   login() {
     this.usernameError = '';
@@ -42,21 +42,21 @@ export class LoginComponent {
     if (!isValid) return;
 
     // API CALL
-    this.http.post<any>('http://localhost:3000/login', {
+    this.http.post<any>('http://localhost:3000/api/admin/login', {
       username: this.username,
       password: this.password
     }).subscribe({
       next: (res) => {
-        if (res.success) {
+        if (res.status == "success") {
           localStorage.setItem('auth', 'true');
           this.router.navigate(['/dashboard']);
         } else {
-          alert('Invalid username or password');
+          alert(res.message);
         }
       },
       error: (err) => {
         console.error(err);
-        alert('Server error');
+        alert(err.message)
       }
     });
   }

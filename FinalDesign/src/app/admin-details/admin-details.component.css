@@ -99,3 +99,14 @@ input {
   border: 1px solid #ccc;
   
 }
+/* CONFIRM BOX EXTRA STYLE */
+.confirm-box {
+  text-align: center;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
