@@ -349,6 +349,7 @@ export class UsersComponent implements AfterViewInit, OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    debugger
     this.loadUsers();
   }
 
