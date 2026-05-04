@@ -7,9 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8080/users';
-   // 🔥 change if needed
-
+  private apiUrl = 'http://localhost:3000/users';
+  
   // private apiUrl = 'mongodb://127.0.0.1:27017/login';
 
   constructor(private http: HttpClient) {}
@@ -21,12 +20,12 @@ export class UserService {
   addUser(user: any): Observable<any> {
     return this.http.post(this.apiUrl, user);
   }
-
-  updateUser(id: number, user: any): Observable<any> {
+  
+  updateUser(id: string, user: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, user);
   }
 
-  deleteUser(id: number): Observable<any> {
+  deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
