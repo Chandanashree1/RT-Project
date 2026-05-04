@@ -19,7 +19,15 @@ const userSchema = new mongoose.Schema(
             type : String,
             required : true
         },
-        adminId : {
+        role : {
+            type : String,
+            required : true
+        },
+        date : {
+            type : Date,
+            required : true
+        },
+        createdBy : {
             type : mongoose.Schema.Types.ObjectId,
             ref : 'Admin',
             required : true

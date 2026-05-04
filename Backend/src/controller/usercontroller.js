@@ -16,8 +16,8 @@ exports.getUser = async (req,res) => {
 // create user
 exports.createUser = async (req,res) => {
     try{
-        const {name,email} = req.body
-        const user = await User.create({name,email,adminId : req.adminId})
+        const {name,email,phone,test,role,date} = req.body
+        const user = await User.create({name,email,createdBy : req.adminId,phone,test,role,date})
         res.status(201).json(user)
     }
     catch(error){
@@ -40,9 +40,9 @@ exports.deleteUser = async (req,res) => {
 exports.updateUser = async (req,res) => {
     try{
         const {id} =  req.params
-        const {name,email} = req.body
+        const {name,email,test,date} = req.body
         console.log("Body",req.body)
-        const updateuser = await User.findByIdAndUpdate(id,{name,email,adminId : req.adminId},{new : true})
+        const updateuser = await User.findByIdAndUpdate(id,{name,email,createdBy : req.adminId,test,date},{new : true})
         if(!updateuser){
         return res.status(404).json({message : "User not found"})
         }
