@@ -40,7 +40,7 @@ exports.deleteUser = async (req,res) => {
 exports.updateUser = async (req,res) => {
     try{
         const {id} =  req.params
-        const {name,email,test,date} = req.body
+        const {name,email,test,date} = req.body 
         console.log("Body",req.body)
         const updateuser = await User.findByIdAndUpdate(id,{name,email,createdBy : req.adminId,test,date},{new : true})
         if(!updateuser){

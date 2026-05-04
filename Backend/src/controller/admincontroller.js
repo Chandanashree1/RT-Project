@@ -5,11 +5,11 @@ const Admin = require('../models/adminmodel')
 // create admin
 exports.createAdmin = async (req, res) => {
     try {
-        const { fullName, email, phone, password } = req.body
+        const { username, email, phone, password } = req.body
         // const defaultPassword = "Admin@123"
         const hashedPassword = await bcrypt.hash(password, 10)
         const admin = await Admin.create({
-            fullName, email, phone, password: hashedPassword
+            username, email, phone, password: hashedPassword
         })
         res.status(201).json({
             message: "Admin Created"
@@ -76,9 +76,9 @@ exports.deleteAdmin = async(req,res) => {
 exports.updateAdmin = async (req,res) => {
     try{
         const{id} = req.params
-        const{fullName,email,phone} = req.body
+        const{username,email,phone} = req.body
         console.log("Body",req.body)
-        const updateadmin = await Admin.findOneAndUpdate({_id : id},{fullName,email,phone},{new : true})
+        const updateadmin = await Admin.findOneAndUpdate({_id : id},{username,email,phone},{new : true})
         if(!updateadmin){
             return res.status(404).json({message : "User not found"})
         }
