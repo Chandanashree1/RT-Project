@@ -24,7 +24,7 @@ exports.createAdmin = async (req, res) => {
 exports.loginAdmin = async (req, res) => {
     try {
         const { username, password } = req.body;
-        
+        console.log(req.body)
         const admin = await Admin.findOne({ username });
         if (!admin) {
             return res.status(201).json({ message: "Admin not found" });
