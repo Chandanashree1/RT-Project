@@ -42,13 +42,22 @@ export class LoginComponent {
     if (!isValid) return;
 
     // API CALL
-    this.http.post<any>('http://localhost:3000/api/admin/login', {
-      username: this.username,
-      password: this.password
-    }).subscribe({
+    const body = new URLSearchParams();
+  body.set('username', this.username);
+  body.set('password', this.password);
+  body.set('client_id', 'client-id');
+  body.set('client_secret', 'client-secret');
+  body.set('grant_type', 'password'); // or client_credentials
+
+  const headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  };
+
+  this.http.post<any>('http://localhost:3000/oauth/token', body.toString(), { headers }).subscribe({
       next: (res) => {
-        if (res.status == "success") {
+        if (res.accessToken) {
           localStorage.setItem('auth', 'true');
+          sessionStorage.setItem('accessToken', res.accessToken);
           this.router.navigate(['/dashboard']);
         } else {
           alert(res.message);
@@ -59,5 +68,7 @@ export class LoginComponent {
         alert(err.message)
       }
     });
+
+
   }
 }

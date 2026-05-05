@@ -1,4 +1,4 @@
-<div class="dashboard">
+<!-- <div class="dashboard">
 
   <h2>Dashboard</h2>
 
@@ -20,6 +20,37 @@
       <td>{{u.date}}</td>
       <td>{{u.status}}</td>
     </tr>
+  </table>
+
+</div> -->
+<div class="dashboard">
+
+  <h2>Dashboard</h2>
+
+  <table border="1" width="100%">
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>test</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+
+    <tr *ngFor="let u of users">
+      <td>
+        <span class="clickable" (click)="openUser(u)">
+          {{ u.name }}
+        </span>
+      </td>
+
+      <td>{{ u.role }}</td>
+      
+      <td> {{u.test}}</td>
+
+      <td>{{ u.date | date:'dd-MM-yyyy' }}</td>
+      <td>{{ u.status }}</td>
+    </tr>
+
   </table>
 
 </div>

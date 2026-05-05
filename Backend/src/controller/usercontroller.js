@@ -7,7 +7,6 @@ exports.home = (req,res) => {
 exports.getUser = async (req,res) => {
     try{
         const users = await User.find({isDelete:false})
-
         res.json(users)
     }
     catch(error){
@@ -22,6 +21,7 @@ exports.createUser = async (req,res) => {
         res.status(201).json(user)
     }
     catch(error){
+        console.log("ERROR:", error.message);
         console.log("ERROR:", error.message);
         res.status(500).json({error : error.message})
     }
@@ -41,7 +41,7 @@ exports.deleteUser = async (req,res) => {
 exports.updateUser = async (req,res) => {
     try{
         const {id} =  req.params
-        const {name,email,test,date} = req.body
+        const {name,email,test,date} = req.body 
         console.log("Body",req.body)
         const updateuser = await User.findByIdAndUpdate(id,{name,email,createdBy : req.adminId,test,date},{new : true})
         if(!updateuser){
