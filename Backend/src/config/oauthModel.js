@@ -33,24 +33,39 @@ module.exports = {
     },
     // save token(access+refresh)
     saveToken: async (token, client, user) => {
-        const newToken = await Token.create({
-            accessToken: token.accessToken,
-            accessTokenExpiresAt: token.accessTokenExpiresAt,
-            refreshToken: token.refreshToken,
-            refreshTokenExpiresAt: token.refreshTokenExpiresAt,
-            client: { id: client.id ,grants: client.grants},
-            user: {
-                id: user._id,
-                email: user.email
+        const updatedToken = await Token.findOneAndUpdate(
+            { "user.id": user._id.toString() },
+            {
+                accessToken: token.accessToken,
+                accessTokenExpiresAt: token.accessTokenExpiresAt,
+
+                refreshToken: token.refreshToken,
+                resfreshTokenExpiresAt: token.refreshTokenExpiresAt,
+
+                client: {
+                    id: client.id,
+                    grants: client.grants
+                },
+
+                user: {
+                    id: user._id.toString(),
+                    email: user.email
+                }
+            },
+            {
+                new : true,
+                upsert : true
             }
-        })
+        )
         return {
-            accessToken: newToken.accessToken,
-            accessTokenExpiresAt: newToken.accessTokenExpiresAt,
-            refreshToken: newToken.refreshToken,
-            refreshTokenExpiresAt: newToken.refreshTokenExpiresAt,
-            client: client,
-            user: newToken.user
+            accessToken : updatedToken.accessToken,
+            accessTokenExpiresAt :  updatedToken.accessTokenExpiresAt,
+
+            refreshToken : updatedToken.refreshToken,
+            refreshTokenExpiresAt : updatedToken.resfreshTokenExpiresAt,
+
+            client : updatedToken.client,
+            user : updatedToken.user
         }
     },
     // get access token
